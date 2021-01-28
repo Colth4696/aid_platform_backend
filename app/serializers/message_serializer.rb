@@ -1,3 +1,3 @@
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :chatroom_id, :body, :created_at
 end

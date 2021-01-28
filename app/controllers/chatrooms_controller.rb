@@ -2,7 +2,7 @@ class ChatroomsController < ApplicationController
 
     def index
         @chatrooms = Chatroom.all
-        render json: chatroom
+        render json: chatrooms
       end
     
       def show
@@ -10,7 +10,7 @@ class ChatroomsController < ApplicationController
       end
       def create
         @chatroom = Chatroom.new(chatroom_params)
-            if chatroom.save
+            if @chatroom.save
                 serialized_data = ActiveModelSerializers::Adapter::Json.new(
                     ChatroomSerializer.new(chatroom)
                 ).serializable_hash
@@ -22,7 +22,7 @@ class ChatroomsController < ApplicationController
     private
       
     def chatroom_params
-      params.require(:chatroom).permit(:name)
+      params.require(:chatroom).permit(:name, :request_id, :volunteer_id)
     end
   end
 

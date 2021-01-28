@@ -4,5 +4,6 @@ class ChatroomChannel < ApplicationCable::Channel
   end
   
 def unsubcribed
+  raise NotImplementedError
 end
 end
